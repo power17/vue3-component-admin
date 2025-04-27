@@ -7,7 +7,16 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
+    ElSlider: typeof import('element-plus/es')['ElSlider']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    IconIfy: typeof import('./src/components/Icon/Iconify.vue')['default']
+    IconList: typeof import('./src/components/Icon/IconList.vue')['default']
+    IconNetIcon: typeof import('./src/components/Icon/NetIcon.vue')['default']
+    IconPicker: typeof import('./src/components/Icon/IconPicker.vue')['default']
+    IconSvgIcon: typeof import('./src/components/Icon/SvgIcon.vue')['default']
     ReloadPrompt: typeof import('./src/components/ReloadPrompt.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

@@ -6,15 +6,13 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import UnoCSS from 'unocss/vite'
 
-import VueRouter from 'unplugin-vue-router/vite'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import Layouts from 'vite-plugin-vue-layouts'
 import { VitePWA } from 'vite-plugin-pwa'
 import { viteMockServe } from 'vite-plugin-mock'
-import dotenv from 'dotenv'
-
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import path from 'node:path'
 // Load environment variables
 
 // https://vite.dev/config/
@@ -29,12 +27,12 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
-      VueRouter(),
       vue(),
       vueJsx(),
       vueDevTools(),
       UnoCSS(),
       AutoImport({
+        resolvers: [ElementPlusResolver()],
         include: [
           /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
           /\.vue$/,
@@ -43,21 +41,12 @@ export default defineConfig(({ mode }) => {
         ],
 
         // global imports to register
-        imports: [
-          // presets
-          'vue',
-          // 'vue-router'
-          VueRouterAutoImports,
-          '@vueuse/core'
-        ]
+        imports: ['vue', '@vueuse/core']
       }),
       Components({
         directoryAsNamespace: true,
-        collapseSamePrefixes: true
-      }),
-      Layouts({
-        layoutsDirs: 'src/layouts',
-        defaultLayout: 'default'
+        collapseSamePrefixes: true,
+        resolvers: [ElementPlusResolver()]
       }),
       VitePWA({
         injectRegister: 'auto',
@@ -94,6 +83,12 @@ export default defineConfig(({ mode }) => {
       viteMockServe({
         mockPath: 'mock',
         enable: enableMock
+      }),
+      createSvgIconsPlugin({
+        // Specify the icon folder to be cached
+        iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+        // Specify symbolId format
+        symbolId: 'icon-[name]'
       })
     ],
     resolve: {

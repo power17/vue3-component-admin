@@ -1,0 +1,32 @@
+{
+    "components": {
+      "audio-player": "音频播放器",
+      "cancel": "取消",
+      "choose-icon": "选中的图标",
+      "copy-icon": "复制Icon组件",
+      "copy-icon-name": "复制Icon名称",
+      "copy-svg": "复制SVG图标",
+      "hide-text": "隐藏文字",
+      "icon-lists": "图标列表",
+      "icon-picker": "选择图标",
+      "show-text": "显示文字",
+      "submit": "确定",
+      "video-player": "视频播放器"
+    },
+    "message": {
+      "copy-success": "复制成功"
+    },
+    "pages": {
+      "login": {
+        "code": "验证码",
+        "password": "请输入密码",
+        "phone": "请输入手机号",
+        "remember": "记住账号",
+        "repassword": "请再次输入密码",
+        "sign-up": "注册账号",
+        "submit": "登录",
+        "username": "请输入用户名",
+        "welcome": "欢迎回来"
+      }
+    }
+}
